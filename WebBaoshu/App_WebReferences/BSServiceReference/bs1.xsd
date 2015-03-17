@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/bs.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/bs.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/bs.xsd" id="bs" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="bs">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Users">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="StationID" type="xs:int" />
+              <xs:element name="UserN">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Paw">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="Name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SubStation">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SubStation">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SubData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BCJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="BCBGQS" type="xs:int" />
+              <xs:element minOccurs="0" name="BCZJS" type="xs:int" />
+              <xs:element minOccurs="0" name="BCYLJ" type="xs:int" />
+              <xs:element minOccurs="0" name="BPJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="BPBGQS" type="xs:int" />
+              <xs:element minOccurs="0" name="BPZJS" type="xs:int" />
+              <xs:element minOccurs="0" name="BPYLJ" type="xs:int" />
+              <xs:element minOccurs="0" name="XZJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="XZBGQS" type="xs:int" />
+              <xs:element minOccurs="0" name="XZZJS" type="xs:int" />
+              <xs:element minOccurs="0" name="XZYLJ" type="xs:int" />
+              <xs:element minOccurs="0" name="TKJQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="TKBGQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="TKZJS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="TKYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SubStation">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="StationName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="CreateDateTime" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Data">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SFJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="SFBGQS" type="xs:int" />
+              <xs:element minOccurs="0" name="SFZJ" type="xs:int" />
+              <xs:element minOccurs="0" name="SFBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SFYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SFRJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="SFRBGQS" type="xs:int" />
+              <xs:element minOccurs="0" name="SFRZJ" type="xs:int" />
+              <xs:element minOccurs="0" name="SFRBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SFRYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SRJQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SRBGQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SRZJS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SRBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="SRYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="StationName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element minOccurs="0" name="StationID" type="xs:int" />
+              <xs:element minOccurs="0" name="CreateDateTime" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="WLSRJQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="WLSRBGQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="WLSRZJS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="WLSRBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="WLSRYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DSDSRJQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DSDSRBGQS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DSDSRZJS" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DSDSRBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="DSDSRYLJ" type="xs:decimal" />
+              <xs:element minOccurs="0" name="JCJQS" type="xs:int" />
+              <xs:element minOccurs="0" name="JCGBQS" type="xs:int" />
+              <xs:element minOccurs="0" name="JCZJS" type="xs:int" />
+              <xs:element minOccurs="0" name="JCBFB" type="xs:decimal" />
+              <xs:element minOccurs="0" name="JCYLJ" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Stations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="StationName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

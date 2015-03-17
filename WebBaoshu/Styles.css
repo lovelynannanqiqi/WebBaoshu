@@ -1,0 +1,23 @@
+﻿body{
+    font-size:12px;
+}
+.logDiv {
+    background: #127dc4;
+    margin: 200px auto; /* 居中 这个是必须的，，其它的属性非必须 */
+    width: 360px;
+    height: 230px;
+    box-shadow: 1px 1px 4px #000000;
+    border-radius: 5px;
+    text-align: center;
+    vertical-align: central;
+}
+
+.tipDiv
+{
+    padding-top:45px;
+}
+
+.lableText
+{
+    color:#ffffff;
+}

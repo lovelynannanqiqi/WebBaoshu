@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/bs.xsd" />
+      <s:import schemaLocation="http://192.168.11.210/bs2015/BaoShuFunctions.asmx?schema=bs" namespace="http://tempuri.org/bs.xsd" />
+      <s:element name="CheckUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="pwd" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CheckUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CheckUserResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="StationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainStationName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainStationNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainStationNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubStations">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StationID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubStationsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubStationsResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSubItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="SelectDatetime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubItemsResult" type="tns:ArrayOfSubItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSubItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SubItems" nillable="true" type="tns:SubItems" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SubItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SubStationName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubItemBC" type="tns:SubItemBase" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubItemBP" type="tns:SubItemBase" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubItemXZ" type="tns:SubItemBase" />
+          <s:element minOccurs="0" maxOccurs="1" name="SubItemTK" type="tns:SubItemBase" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SubItemBase">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="baseNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="reportNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="addordecNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="sumMouth" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsertSubItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="si" type="tns:SubItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertSubItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertSubItemResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainItemResult" type="tns:MainItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MainItems">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MainBC" type="tns:MainItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainRS" type="tns:MainItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainSR" type="tns:MainItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainWLSR" type="tns:MainItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainDSDSR" type="tns:MainItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="MainJCS" type="tns:MainItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MainItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="BaseNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ReportNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="AddorDecNumber" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Persent" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="SumMouth" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMainItemByCreateDateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainItemByCreateDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainItemByCreateDateTimeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/bs.xsd" name="namespace" />
+                <s:attribute fixed="DataDataTable" name="tableTypeName" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainItemByBeginAndEndDateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="beginD" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endD" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainItemByBeginAndEndDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainItemByBeginAndEndDateTimeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/bs.xsd" name="namespace" />
+                <s:attribute fixed="DataDataTable" name="tableTypeName" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubItemByCreateDateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubItemByCreateDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubItemByCreateDateTimeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/bs.xsd" name="namespace" />
+                <s:attribute fixed="SubDataDataTable" name="tableTypeName" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubItemByBeginAndEndDateTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="beginD" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endD" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubItemByBeginAndEndDateTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSubItemByBeginAndEndDateTimeResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+                <s:attribute fixed="http://tempuri.org/bs.xsd" name="namespace" />
+                <s:attribute fixed="SubDataDataTable" name="tableTypeName" />
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsHaveMainItems">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsHaveMainItemsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsHaveMainItemsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMainItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="mis" type="tns:MainItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertMainItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertMainItemResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMainItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="mis" type="tns:MainItems" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMainItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateMainItemResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSameSubData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MainStationID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CreateDateTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteSameSubDataResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetSubStationID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SubStationName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSubStationIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetSubStationIDResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckUserSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUser" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainStationNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainStationName" />
+  </wsdl:message>
+  <wsdl:message name="GetMainStationNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainStationNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubStationsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubStations" />
+  </wsdl:message>
+  <wsdl:message name="GetSubStationsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubStationsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubItems" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertSubItemSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertSubItem" />
+  </wsdl:message>
+  <wsdl:message name="InsertSubItemSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertSubItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainItem" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemByCreateDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainItemByCreateDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemByCreateDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainItemByCreateDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemByBeginAndEndDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainItemByBeginAndEndDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetMainItemByBeginAndEndDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainItemByBeginAndEndDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemByCreateDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubItemByCreateDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemByCreateDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubItemByCreateDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemByBeginAndEndDateTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubItemByBeginAndEndDateTime" />
+  </wsdl:message>
+  <wsdl:message name="GetSubItemByBeginAndEndDateTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubItemByBeginAndEndDateTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsHaveMainItemsSoapIn">
+    <wsdl:part name="parameters" element="tns:IsHaveMainItems" />
+  </wsdl:message>
+  <wsdl:message name="IsHaveMainItemsSoapOut">
+    <wsdl:part name="parameters" element="tns:IsHaveMainItemsResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertMainItemSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertMainItem" />
+  </wsdl:message>
+  <wsdl:message name="InsertMainItemSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertMainItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMainItemSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMainItem" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMainItemSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMainItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSameSubDataSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteSameSubData" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSameSubDataSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteSameSubDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSubStationIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSubStationID" />
+  </wsdl:message>
+  <wsdl:message name="GetSubStationIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSubStationIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="BaoShuFunctionsSoap">
+    <wsdl:operation name="CheckUser">
+      <wsdl:input message="tns:CheckUserSoapIn" />
+      <wsdl:output message="tns:CheckUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainStationName">
+      <wsdl:input message="tns:GetMainStationNameSoapIn" />
+      <wsdl:output message="tns:GetMainStationNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStations">
+      <wsdl:input message="tns:GetSubStationsSoapIn" />
+      <wsdl:output message="tns:GetSubStationsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItems">
+      <wsdl:input message="tns:GetSubItemsSoapIn" />
+      <wsdl:output message="tns:GetSubItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertSubItem">
+      <wsdl:input message="tns:InsertSubItemSoapIn" />
+      <wsdl:output message="tns:InsertSubItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItem">
+      <wsdl:input message="tns:GetMainItemSoapIn" />
+      <wsdl:output message="tns:GetMainItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByCreateDateTime">
+      <wsdl:input message="tns:GetMainItemByCreateDateTimeSoapIn" />
+      <wsdl:output message="tns:GetMainItemByCreateDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByBeginAndEndDateTime">
+      <wsdl:input message="tns:GetMainItemByBeginAndEndDateTimeSoapIn" />
+      <wsdl:output message="tns:GetMainItemByBeginAndEndDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByCreateDateTime">
+      <wsdl:input message="tns:GetSubItemByCreateDateTimeSoapIn" />
+      <wsdl:output message="tns:GetSubItemByCreateDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByBeginAndEndDateTime">
+      <wsdl:input message="tns:GetSubItemByBeginAndEndDateTimeSoapIn" />
+      <wsdl:output message="tns:GetSubItemByBeginAndEndDateTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsHaveMainItems">
+      <wsdl:input message="tns:IsHaveMainItemsSoapIn" />
+      <wsdl:output message="tns:IsHaveMainItemsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMainItem">
+      <wsdl:input message="tns:InsertMainItemSoapIn" />
+      <wsdl:output message="tns:InsertMainItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMainItem">
+      <wsdl:input message="tns:UpdateMainItemSoapIn" />
+      <wsdl:output message="tns:UpdateMainItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSameSubData">
+      <wsdl:input message="tns:DeleteSameSubDataSoapIn" />
+      <wsdl:output message="tns:DeleteSameSubDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStationID">
+      <wsdl:input message="tns:GetSubStationIDSoapIn" />
+      <wsdl:output message="tns:GetSubStationIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BaoShuFunctionsSoap" type="tns:BaoShuFunctionsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUser">
+      <soap:operation soapAction="http://tempuri.org/CheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainStationName">
+      <soap:operation soapAction="http://tempuri.org/GetMainStationName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStations">
+      <soap:operation soapAction="http://tempuri.org/GetSubStations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItems">
+      <soap:operation soapAction="http://tempuri.org/GetSubItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSubItem">
+      <soap:operation soapAction="http://tempuri.org/InsertSubItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItem">
+      <soap:operation soapAction="http://tempuri.org/GetMainItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByCreateDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetMainItemByCreateDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByBeginAndEndDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetMainItemByBeginAndEndDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByCreateDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetSubItemByCreateDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByBeginAndEndDateTime">
+      <soap:operation soapAction="http://tempuri.org/GetSubItemByBeginAndEndDateTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsHaveMainItems">
+      <soap:operation soapAction="http://tempuri.org/IsHaveMainItems" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMainItem">
+      <soap:operation soapAction="http://tempuri.org/InsertMainItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMainItem">
+      <soap:operation soapAction="http://tempuri.org/UpdateMainItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSameSubData">
+      <soap:operation soapAction="http://tempuri.org/DeleteSameSubData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStationID">
+      <soap:operation soapAction="http://tempuri.org/GetSubStationID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BaoShuFunctionsSoap12" type="tns:BaoShuFunctionsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUser">
+      <soap12:operation soapAction="http://tempuri.org/CheckUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainStationName">
+      <soap12:operation soapAction="http://tempuri.org/GetMainStationName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStations">
+      <soap12:operation soapAction="http://tempuri.org/GetSubStations" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItems">
+      <soap12:operation soapAction="http://tempuri.org/GetSubItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertSubItem">
+      <soap12:operation soapAction="http://tempuri.org/InsertSubItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItem">
+      <soap12:operation soapAction="http://tempuri.org/GetMainItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByCreateDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetMainItemByCreateDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMainItemByBeginAndEndDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetMainItemByBeginAndEndDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByCreateDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetSubItemByCreateDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubItemByBeginAndEndDateTime">
+      <soap12:operation soapAction="http://tempuri.org/GetSubItemByBeginAndEndDateTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsHaveMainItems">
+      <soap12:operation soapAction="http://tempuri.org/IsHaveMainItems" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMainItem">
+      <soap12:operation soapAction="http://tempuri.org/InsertMainItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMainItem">
+      <soap12:operation soapAction="http://tempuri.org/UpdateMainItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteSameSubData">
+      <soap12:operation soapAction="http://tempuri.org/DeleteSameSubData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubStationID">
+      <soap12:operation soapAction="http://tempuri.org/GetSubStationID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BaoShuFunctions">
+    <wsdl:port name="BaoShuFunctionsSoap" binding="tns:BaoShuFunctionsSoap">
+      <soap:address location="http://192.168.11.210/bs2015/BaoShuFunctions.asmx" />
+    </wsdl:port>
+    <wsdl:port name="BaoShuFunctionsSoap12" binding="tns:BaoShuFunctionsSoap12">
+      <soap12:address location="http://192.168.11.210/bs2015/BaoShuFunctions.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
